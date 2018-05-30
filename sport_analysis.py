@@ -2,17 +2,11 @@
 import records
 db = records.Database("postgres://localhost/sports_analysis")
 
-#######################DEBUG#############################
-#rows = db.query("SELECT * FROM epl_data;")
-#for row in rows:
-#    print(row)
-
 ###################Stat Search (Existing Team)#############################
 team_name_input = input("Whats the team name? ")
-rows = db.query("SELECT * FROM epl_data WHERE team_name = :data ;", data=team_name_input)
+rows = db.query("SELECT * FROM epl_data.py WHERE team_name = :data ;", data=team_name_input)
 for row in rows:
-    print(row)
-
+   print(row)
 #########################CREATE NEW TEAM#######################
 new_team_name = input("Whats the new team name? ")
 new_team_wins = input("How many wins? ")
