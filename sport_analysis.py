@@ -4,7 +4,7 @@ db = records.Database("postgres://localhost/sports_analysis")
 
 ###################Stat Search (Existing Team)#############################
 team_name_input = input("Whats the team name? ")
-rows = db.query("SELECT * FROM epl_data.py WHERE team_name = :data ;", data=team_name_input)
+rows = db.query("SELECT * FROM epl_data WHERE team_name = :data ;", data=team_name_input)
 for row in rows:
    print(row)
 #########################CREATE NEW TEAM#######################

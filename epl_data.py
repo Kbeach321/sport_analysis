@@ -1,10 +1,17 @@
+import records
+db = records.Database("postgres://localhost/sports_analysis")
+db.query("DROP TABLE IF EXISTS epl_data;")
 
+create_query = """
 CREATE TABLE epl_data (
     team_name VARCHAR(30),
     wins NUMERIC(2),
     losses NUMERIC(2),
     points NUMERIC(3));
+"""
+db.query(create_query)
 
+insert_query = """
 INSERT INTO epl_data VALUES ('Man City', 32, 2, 100);
 
 INSERT INTO epl_data VALUES ('Man United', 25, 7, 81);
@@ -31,6 +38,6 @@ INSERT INTO epl_data VALUES ('Bournemouth', 11, 16, 44);
 
 INSERT INTO epl_data VALUES ('West Ham', 10, 16, 42);
 
-rows = db.query("SELECT * FROM epl_data;")
-for row in rows:
-    print(row)
+"""
+
+db.query(insert_query)
